@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'/categorias_noticias'], function(){
-    Route::get('/', [CategoriasNoticiasController::class, 'index'])->name('categorias.noticias.index');
+    Route::get('/index', [CategoriasNoticiasController::class, 'index'])->name('categorias.noticias.index');
     Route::get('/create', [CategoriasNoticiasController::class, 'create'])->name('categorias.noticias.create');
     Route::post('/store', [CategoriasNoticiasController::class, 'store'])->name('categorias.noticias.store');
     Route::get('/edit', [CategoriasNoticiasController::class, 'edit'])->name('categorias.noticias.edit');

@@ -14,10 +14,10 @@ class CategoriasNoticiasController extends Controller
      */
     public function index()
     {
-        $CategoriaNoticia = CategoriasNoticias::all();
+        $Categorias = CategoriasNoticias::all();
 
-        return view('categorias_noticas.index', [
-            'CategoriasNoticias' => $CategoriaNoticia,
+        return view('categorias_noticias.index', [
+            'Categorias' => $Categorias,
         ]);
     }
 

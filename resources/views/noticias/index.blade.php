@@ -2,27 +2,34 @@
 
 
 @section('content')
-    {{-- <a href="{{ route('categorias.noticias.index', $Categoria) }}"> --}}
     <div class="mx-auto row">
         <div class="col-12">
             <table class="table table-striped">
 
                 <tr>
                     <th>Categoria</th>
+                    <th>Título</th>
+                    <th>Notícia</th>
+                    <th>Descritivo Da Notícia</th>
+                    <th>Imagem</th>
                     <th>Status</th>
                     <th>Ações</th>
 
                 </tr>
-                @foreach ($Categorias as $Categoria)
+                @foreach ($Noticias as $Noticia)
                     <tr>
-                        <td>{{ $Categoria->categoria }}</td>
-                        <td>{{ $Categoria->status }}</td>
+                        <td>{{ $Noticia->categoria }}</td>
+                        <td>{{ $Noticia->titulo }}</td>
+                        <td>{{ $Noticia->noticia }}</td>
+                        <td>{{ $Noticia->descritivo_noticia }}</td>
+                        <td>{{ $Noticia->imagem }}</td>
+                        <td>{{ $Noticia->status }}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{ route('categorias.noticias.edit', $Categoria) }}">
+                            <a class="btn btn-primary" href="{{ route('noticias.edit', $Noticia) }}">
                                 <i class="fa-solid fa-pen-ruler"></i>
                                 Editar
                             </a>
-                            <a class="btn btn-danger" href="{{ route('categorias.noticias.destroy', $Categoria) }}">
+                            <a class="btn btn-danger" href="{{ route('noticias.destroy', $Noticia) }}">
                                 <i class="fa-solid fa-trash-can"></i>
                                 Excluir
                             </a>

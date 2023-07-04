@@ -46,7 +46,7 @@ class CategoriasNoticiasController extends Controller
 
         CategoriasNoticias::create($request->all());
 
-        return redirect()->back()->with('success', 'Pessoa cadastrada com sucesso!');
+        return redirect()->back()->with('success', 'Categoria cadastrada com sucesso!');
     }
 
     /**
@@ -66,9 +66,12 @@ class CategoriasNoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Categoria)
     {
-        //
+        $Categoria = CategoriasNoticias::find($Categoria);
+        return view('categorias_noticias.edit',[
+            'Categoria' => $Categoria
+        ]);
     }
 
     /**
@@ -80,7 +83,15 @@ class CategoriasNoticiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'categoria' => 'required|string',
+            'status' => 'required|integer',
+
+        ]);
+
+        CategoriasNoticias::find($id)->update($request->all());
+
+        return redirect()->back()->with('success', 'Categoria alterada com sucesso!');
     }
 
     /**
@@ -89,8 +100,10 @@ class CategoriasNoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Categoria)
     {
-        //
+        CategoriasNoticias::find($Categoria)->delete();
+
+        return redirect()->back()->with('success', 'Item excluído com sucesso!');
     }
 }

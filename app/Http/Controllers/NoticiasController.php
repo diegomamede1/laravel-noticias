@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoriasNoticias;
+use App\Models\Noticias;
 use Illuminate\Http\Request;
 
 class NoticiasController extends Controller
@@ -13,7 +15,11 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        //
+        $Noticias = Noticias::all();
+
+        return view('noticias.index', [
+            'Noticias' => $Noticias,
+        ]);
     }
 
     /**
@@ -23,7 +29,10 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        //
+        $Categorias = CategoriasNoticias::all();
+        return view('noticias.create', [
+            'Categorias' => $Categorias,
+        ]);
     }
 
     /**
@@ -34,7 +43,18 @@ class NoticiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'categoria' => 'required|integer',
+            'titulo' => 'required|string',
+            'noticia' => 'required|string',
+            'descritivo_noticia' => 'required|string',
+            'imagem',
+            'status' => 'required|integer',
+        ]);
+
+        Noticias::create($request->all());
+
+        return redirect()->back()->with('success', 'Notícia cadastrada com sucesso!');
     }
 
     /**
@@ -54,9 +74,12 @@ class NoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Noticia)
     {
-        //
+        $Noticia = Noticias::find($Noticia);
+        return view('noticias.edit',[
+            'Categoria' => $Noticia
+        ]);
     }
 
     /**
@@ -77,8 +100,10 @@ class NoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Noticia)
     {
-        //
+        Noticias::find($Noticia)->delete();
+
+        return redirect()->back()->with('success', 'Item excluído com sucesso!');
     }
 }

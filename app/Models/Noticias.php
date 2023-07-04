@@ -10,11 +10,11 @@ class Noticias extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Categorias',
-        'Titulo',
-        'Noticia',
-        'DescritivoDaNoticia',
-        'Imagem',
-        'Status',
+        'categoria',
+        'titulo',
+        'noticia',
+        'descritivo_noticia',
+        'imagem',
+        'status',
     ];
 }

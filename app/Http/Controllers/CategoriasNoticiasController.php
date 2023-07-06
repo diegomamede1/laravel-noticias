@@ -86,7 +86,6 @@ class CategoriasNoticiasController extends Controller
         $this->validate($request, [
             'categoria' => 'required|string',
             'status' => 'required|integer',
-
         ]);
 
         CategoriasNoticias::find($id)->update($request->all());

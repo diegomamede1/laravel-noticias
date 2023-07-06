@@ -9,8 +9,6 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Título</th>
-                    <th>Notícia</th>
-                    <th>Descritivo Da Notícia</th>
                     <th>Imagem</th>
                     <th>Status</th>
                     <th>Ações</th>
@@ -20,8 +18,6 @@
                     <tr>
                         <td>{{ $Noticia->categoria }}</td>
                         <td>{{ $Noticia->titulo }}</td>
-                        <td>{{ $Noticia->noticia }}</td>
-                        <td>{{ $Noticia->descritivo_noticia }}</td>
                         <td>{{ $Noticia->imagem }}</td>
                         <td>{{ $Noticia->status }}</td>
                         <td>

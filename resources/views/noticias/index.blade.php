@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ $Noticia->categoria }}</td>
                         <td>{{ $Noticia->titulo }}</td>
-                        <td>{{ $Noticia->imagem }}</td>
+                        <td><img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" style="width: 100px;"></td>
                         <td>
                             @if ($Noticia->status == 1)
                                 Ativo
@@ -38,4 +38,3 @@
         </div>
     </div>
 @endsection
-

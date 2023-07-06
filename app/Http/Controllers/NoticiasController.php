@@ -17,9 +17,10 @@ class NoticiasController extends Controller
     public function index()
     {
         $Noticias = Noticias::all();
-
+        $Categorias = CategoriasNoticias::all();
         return view('noticias.index', [
             'Noticias' => $Noticias,
+            'Categorias' => $Categorias,
         ]);
     }
 

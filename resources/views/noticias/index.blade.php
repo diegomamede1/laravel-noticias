@@ -13,26 +13,28 @@
                     <th>Ações</th>
                 </tr>
                 @foreach ($Noticias as $Noticia)
-                    <tr>
-                        <td>{{ $Noticia->categoria }}</td>
-                        <td>{{ $Noticia->titulo }}</td>
-                        <td><img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" style="width: 100px;"></td>
-                        <td>
-                            @if ($Noticia->status == 1)
-                                Ativo
-                            @endif
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('noticias.edit', $Noticia) }}">
-                                <i class="fa-solid fa-pen-ruler"></i>
-                                Editar
-                            </a>
-                            <a class="btn btn-danger" href="{{ route('noticias.destroy', $Noticia) }}">
-                                <i class="fa-solid fa-trash-can"></i>
-                                Excluir
-                            </a>
-                        </td>
-                    </tr>
+                    @if ($Noticia->status == 1)
+                        <tr>
+                            <td>{{ $Noticia->categoria }}</td>
+                            <td>{{ $Noticia->titulo }}</td>
+                            <td><img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" style="width: 100px;"></td>
+                            <td>
+                                @if ($Noticia->status == 1)
+                                    Ativo
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('noticias.edit', $Noticia) }}">
+                                    <i class="fa-solid fa-pen-ruler"></i>
+                                    Editar
+                                </a>
+                                <a class="btn btn-danger" href="{{ route('noticias.destroy', $Noticia) }}">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </table>
         </div>

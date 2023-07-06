@@ -74,11 +74,12 @@ class NoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Noticia)
+    public function edit(Noticias $id)
     {
-        $Noticia = Noticias::find($Noticia);
-        return view('noticias.edit',[
-            'Categoria' => $Noticia
+        $Categorias = CategoriasNoticias::all();
+        return view('noticias.edit', [
+            'Categorias' => $Categorias,
+            'Noticia' => $id,
         ]);
     }
 
@@ -91,7 +92,18 @@ class NoticiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'categoria' => 'required|integer',
+            'titulo' => 'required|string',
+            'noticia' => 'required|string',
+            'descritivo_noticia' => 'required|string',
+            'imagem',
+            'status' => 'required|integer',
+        ]);
+
+        Noticias::find($id)->update($request->all());
+
+        return redirect()->back()->with('success', 'Notícia alterada com sucesso!');
     }
 
     /**

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,3 +38,5 @@ Route::group(['prefix' => '/noticias'], function () {
     Route::post('/update{id}', [NoticiasController::class, 'update'])->name('noticias.update');
     Route::get('/destroy/{id}', [NoticiasController::class, 'destroy'])->name('noticias.destroy');
 });
+
+

@@ -19,7 +19,8 @@
                 @endforeach
             @endif
 
-            <form action="{{ route('noticias.store') }}" method="POST">
+            {{--  enctype="multipart/form-data" para enviar arquivos--}}
+            <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <select name="categoria">
@@ -44,7 +45,7 @@
                 <br>
                 <br>
                 <label for="imagem">Imagem:</label><br>
-                <input type="file" name="imagem">
+                <input type="file" name="imagem" required>
                 <br>
                 <br>
                 <label for="status">Status:</label><br>

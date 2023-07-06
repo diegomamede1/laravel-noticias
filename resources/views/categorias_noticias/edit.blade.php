@@ -25,7 +25,7 @@
                 <input type="text" name="categoria" value="{{ $Categoria->categoria }}" id="categoria">
                 <br>
                 <br>
-                <label for="status">Status: {{$Categoria->status}}</label><br>
+                <label for="status">Status:</label><br>
                 <select name="status">
                     <option value="1" {{$Categoria->status == 1 ? "selected" : ''}}>Ativo</option>
                     <option value="2" {{$Categoria->status == 2 ? "selected" : ''}}>Inativo</option>

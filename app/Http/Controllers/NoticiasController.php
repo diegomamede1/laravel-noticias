@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoriasNoticias;
 use App\Models\Noticias;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class NoticiasController extends Controller
 {
@@ -52,7 +53,23 @@ class NoticiasController extends Controller
             'status' => 'required|integer',
         ]);
 
-        Noticias::create($request->all());
+        $dados = $request->all();
+
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
+
+            // Redimensiona e salva a imagem com a biblioteca Intervention Image
+            Image::make($imagem)
+                //Isso não é obrigatorio, uma vez que vc pode salvar a imagem no tamaho origial
+                ->resize(300, 200) // Defina o tamanho desejado da imagem
+                ->save(public_path('/storage/noticias/' . $nomeImagem));
+
+            $dados['imagem'] = $nomeImagem;
+        }
+
+
+        Noticias::create($dados);
 
         return redirect()->back()->with('success', 'Notícia cadastrada com sucesso!');
     }

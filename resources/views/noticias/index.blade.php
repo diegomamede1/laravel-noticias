@@ -1,6 +1,5 @@
 @extends('base')
 
-
 @section('content')
     <div class="mx-auto row">
         <div class="col-12">
@@ -12,14 +11,17 @@
                     <th>Imagem</th>
                     <th>Status</th>
                     <th>Ações</th>
-
                 </tr>
                 @foreach ($Noticias as $Noticia)
                     <tr>
                         <td>{{ $Noticia->categoria }}</td>
                         <td>{{ $Noticia->titulo }}</td>
                         <td>{{ $Noticia->imagem }}</td>
-                        <td>{{ $Noticia->status }}</td>
+                        <td>
+                            @if ($Noticia->status == 1)
+                                Ativo
+                            @endif
+                        </td>
                         <td>
                             <a class="btn btn-primary" href="{{ route('noticias.edit', $Noticia) }}">
                                 <i class="fa-solid fa-pen-ruler"></i>
@@ -36,3 +38,4 @@
         </div>
     </div>
 @endsection
+

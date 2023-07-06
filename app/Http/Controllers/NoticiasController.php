@@ -49,7 +49,7 @@ class NoticiasController extends Controller
             'titulo' => 'required|string',
             'noticia' => 'required|string',
             'descritivo_noticia' => 'required|string',
-            'imagem',
+            'imagem' => 'required|image|mimes:jpg,png,gif',
             'status' => 'required|integer',
         ]);
 

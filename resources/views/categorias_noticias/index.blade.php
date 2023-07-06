@@ -13,7 +13,11 @@
                     @if ($Categoria->status == 1)
                         <tr>
                             <td>{{ $Categoria->categoria }}</td>
-                            <td>{{ $Categoria->status }}</td>
+                            <td>
+                                @if ($Categoria->status == 1)
+                                    Ativo
+                                @endif
+                            </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('categorias.noticias.edit', $Categoria) }}">
                                     <i class="fa-solid fa-pen-ruler"></i>

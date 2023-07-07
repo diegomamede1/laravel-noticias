@@ -5,7 +5,22 @@
     <div class="col-12">
         @section('content')
             <h1>Atualizar Notícia {{ $Noticia->titulo }}</h1>
-            <form action="{{ route('noticias.update', $Noticia) }}" method="POST">
+
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
+            <form action="{{ route('noticias.update', $Noticia) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <select name="categoria">
@@ -42,19 +57,6 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
-            @if (session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if ($errors->all())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
         </div>
     </div>
 @endsection

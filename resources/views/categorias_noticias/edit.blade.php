@@ -5,6 +5,21 @@
     <div>
         @section('content')
             <h1>Editar Categoria</h1>
+
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
             <form action="{{ route('categorias.noticias.update', $Categoria) }}" method="POST">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
@@ -19,19 +34,6 @@
 
                 <button type="submit">Enviar</button>
             </form>
-            @if (session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if ($errors->all())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
         </div>
     </div>
 @endsection

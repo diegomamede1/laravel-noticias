@@ -1,9 +1,7 @@
-@extends('base')
+@extends('admin.base')
 @section('titulo', 'Noticia')
 
-<div>
-    <div>
-        @section('content')
+@section('content')
             <h1>Cadastro de Notícias</h1>
 
             @if (session()->has('success'))
@@ -21,7 +19,7 @@
             @endif
 
             {{--  enctype="multipart/form-data" para enviar arquivos --}}
-            <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.noticias.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <select name="categoria">
@@ -60,6 +58,4 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
-        </div>
-    </div>
 @endsection

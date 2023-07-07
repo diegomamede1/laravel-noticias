@@ -18,7 +18,7 @@ class NoticiasController extends Controller
     {
         $Noticias = Noticias::all();
         $Categorias = CategoriasNoticias::all();
-        return view('noticias.index', [
+        return view('admin.noticias.index', [
             'Noticias' => $Noticias,
             'Categorias' => $Categorias,
         ]);
@@ -32,7 +32,7 @@ class NoticiasController extends Controller
     public function create()
     {
         $Categorias = CategoriasNoticias::all();
-        return view('noticias.create', [
+        return view('admin.noticias.create', [
             'Categorias' => $Categorias,
         ]);
     }
@@ -94,7 +94,7 @@ class NoticiasController extends Controller
     public function edit(Noticias $id)
     {
         $Categorias = CategoriasNoticias::all();
-        return view('noticias.edit', [
+        return view('admin.noticias.edit', [
             'Categorias' => $Categorias,
             'Noticia' => $id,
         ]);

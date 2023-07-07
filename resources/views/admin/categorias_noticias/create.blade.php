@@ -1,9 +1,7 @@
-@extends('base')
+@extends('admin.base')
 @section('titulo', 'Cadastro de Noticia')
 
-<div>
-    <div>
-        @section('content')
+@section('content')
             <h1>Categorias de Notícias</h1>
 
             @if (session()->has('success'))
@@ -20,7 +18,7 @@
                 @endforeach
             @endif
 
-            <form action="{{ route('categorias.noticias.store') }}" method="POST">
+            <form action="{{ route('admin.categorias.noticias.store') }}" method="POST">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <input type="text" name="categoria" id="categoria">
@@ -35,6 +33,4 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
-        </div>
-    </div>
 @endsection

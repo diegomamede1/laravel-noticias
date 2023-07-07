@@ -1,9 +1,8 @@
-@extends('base')
+@extends('admin.base')
 @section('titulo', 'Noticia')
 
-<div class="mx-auto row">
-    <div class="col-12">
-        @section('content')
+@section('content')
+
             <h1>Atualizar Notícia {{ $Noticia->titulo }}</h1>
 
             @if (session()->has('success'))
@@ -20,7 +19,7 @@
                 @endforeach
             @endif
 
-            <form action="{{ route('noticias.update', $Noticia) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.noticias.update', $Noticia) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <select name="categoria">
@@ -57,6 +56,4 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
-        </div>
-    </div>
 @endsection

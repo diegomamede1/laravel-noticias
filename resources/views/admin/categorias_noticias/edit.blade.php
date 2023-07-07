@@ -1,9 +1,7 @@
-@extends('base')
+@extends('admin.base')
 @section('titulo', 'Cadastro de Noticia')
 
-<div>
-    <div>
-        @section('content')
+@section('content')
             <h1>Editar Categoria</h1>
 
             @if (session()->has('success'))
@@ -20,7 +18,7 @@
                 @endforeach
             @endif
 
-            <form action="{{ route('categorias.noticias.update', $Categoria) }}" method="POST">
+            <form action="{{ route('admin.categorias.noticias.update', $Categoria) }}" method="POST">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <input type="text" name="categoria" value="{{ $Categoria->categoria }}" id="categoria">
@@ -34,6 +32,4 @@
 
                 <button type="submit">Enviar</button>
             </form>
-        </div>
-    </div>
 @endsection

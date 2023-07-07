@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoriasNoticias;
 use Illuminate\Http\Request;
 
-class CategoriasNoticiasController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,7 @@ class CategoriasNoticiasController extends Controller
      */
     public function index()
     {
-        $Categorias = CategoriasNoticias::all();
-
-        return view('admin.categorias_noticias.index', [
-            'Categorias' => $Categorias,
-        ]);
+        return view('site.home');
     }
 
     /**
@@ -28,7 +23,7 @@ class CategoriasNoticiasController extends Controller
      */
     public function create()
     {
-        return view('admin.categorias_noticias.create');
+        //
     }
 
     /**
@@ -39,14 +34,7 @@ class CategoriasNoticiasController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'categoria' => 'required|string',
-            'status' => 'required|integer',
-        ]);
-
-        CategoriasNoticias::create($request->all());
-
-        return redirect()->back()->with('success', 'Categoria cadastrada com sucesso!');
+        //
     }
 
     /**
@@ -66,12 +54,9 @@ class CategoriasNoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Categoria)
+    public function edit($id)
     {
-        $Categoria = CategoriasNoticias::find($Categoria);
-        return view('admin.categorias_noticias.edit',[
-            'Categoria' => $Categoria
-        ]);
+        //
     }
 
     /**
@@ -83,14 +68,7 @@ class CategoriasNoticiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'categoria' => 'required|string',
-            'status' => 'required|integer',
-        ]);
-
-        CategoriasNoticias::find($id)->update($request->all());
-
-        return redirect()->back()->with('success', 'Categoria alterada com sucesso!');
+        //
     }
 
     /**
@@ -99,10 +77,8 @@ class CategoriasNoticiasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($Categoria)
+    public function destroy($id)
     {
-        CategoriasNoticias::find($Categoria)->delete();
-
-        return redirect()->back()->with('success', 'Item excluído com sucesso!');
+        //
     }
 }

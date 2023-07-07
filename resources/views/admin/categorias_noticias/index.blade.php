@@ -1,24 +1,16 @@
-@extends('base')
+@extends('admin.base')
 @section('content')
-
-    <div >
-        <div>
-            <table class="table table-striped">
-
+    <table class="table table-striped">
                 <tr>
                     <th>Categoria</th>
-                    <th>Título</th>
-                    <th>Imagem</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </tr>
-                @foreach ($Noticias as $Noticia)
+                @foreach ($Categorias as $Categoria)
                     <tr>
-                        <td>{{ $Noticia->categoria }}</td>
-                        <td>{{ $Noticia->titulo }}</td>
-                        <td><img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" style="width: 100px;"></td>
+                        <td>{{ $Categoria->categoria }}</td>
                         <td>
-                            @if ($Noticia->status == 1)
+                            @if ($Categoria->status == 1)
                                 <span class="badge badge-success">
                                     Ativo
                                 </span>
@@ -29,18 +21,16 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-primary" href="{{ route('noticias.edit', $Noticia) }}">
+                            <a class="btn btn-primary" href="{{ route('admin.categorias.noticias.edit', $Categoria) }}">
                                 <i class="fa-solid fa-pen-ruler"></i>
                                 Editar
                             </a>
-                            <a class="btn btn-danger" href="{{ route('noticias.destroy', $Noticia) }}">
+                            <a class="btn btn-danger" href="{{ route('admin.categorias.noticias.destroy', $Categoria) }}">
                                 <i class="fa-solid fa-trash-can"></i>
                                 Excluir
                             </a>
                         </td>
                     </tr>
                 @endforeach
-            </table>
-        </div>
-    </div>
+    </table>
 @endsection

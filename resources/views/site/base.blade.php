@@ -16,7 +16,7 @@
     <div class="mx-auto row">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Notícias</a>
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Notícias</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -27,19 +27,16 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('categorias.noticias.create') }}">Cadastrar Categoria de
-                                Notícia</a>
+                            <a class="nav-link" href="{{ route('site.home.index') }}">Home</a>
                         </li>
-                        <li class="nav-item active">
+                        {{-- <li class="nav-item active">
                             <a class="nav-link" href="{{ route('categorias.noticias.index') }}">Gerenciar Categoria de
                                 Notícia</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('noticias.create') }}">Cadastrar Notícia</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('noticias.index') }}">Gerenciar Notícia</a>
-                        </li>
+                            <a class="nav-link" href="{{ route('noticias.create') }}"></a>
+                        </li> --}}
+
 
                     </ul>
                 </div>
@@ -51,6 +48,24 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <style>
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
 </body>
 
 </html>

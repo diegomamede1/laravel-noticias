@@ -1,9 +1,8 @@
 @extends('base')
-
 @section('titulo', 'Noticia')
 
-<div class="mx-auto row">
-    <div class="col-12">
+<div>
+    <div>
         @section('content')
             <h1>Cadastro de Notícias</h1>
 

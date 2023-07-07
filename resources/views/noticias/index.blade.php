@@ -1,8 +1,8 @@
 @extends('base')
-
 @section('content')
-    <div class="mx-auto row">
-        <div class="col-12">
+
+    <div >
+        <div>
             <table class="table table-striped">
 
                 <tr>

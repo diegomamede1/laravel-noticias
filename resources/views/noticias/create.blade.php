@@ -5,19 +5,6 @@
     <div>
         @section('content')
             <h1>Cadastro de Notícias</h1>
-
-            @if (!empty(session('success')))
-                {{ session('success') }}
-            @endif
-
-            @if ($errors->all())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
-
             {{--  enctype="multipart/form-data" para enviar arquivos --}}
             <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -57,8 +44,20 @@
                 <br>
                 <br>
                 <button type="submit">Enviar</button>
-
             </form>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

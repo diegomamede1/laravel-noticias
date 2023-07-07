@@ -6,18 +6,6 @@
         @section('content')
             <h1>Categorias de Notícias</h1>
 
-            @if (!empty(session('success')))
-                {{ session('success') }}
-            @endif
-
-            @if ($errors->all())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
-
             <form action="{{ route('categorias.noticias.store') }}" method="POST">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
@@ -33,6 +21,21 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
+
+
 @endsection

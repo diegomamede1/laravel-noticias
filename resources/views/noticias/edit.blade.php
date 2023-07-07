@@ -1,24 +1,10 @@
 @extends('base')
-
 @section('titulo', 'Noticia')
 
 <div class="mx-auto row">
     <div class="col-12">
         @section('content')
             <h1>Atualizar Notícia {{ $Noticia->titulo }}</h1>
-
-            @if (!empty(session('success')))
-                {{ session('success') }}
-            @endif
-
-            @if ($errors->all())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
-
             <form action="{{ route('noticias.update', $Noticia) }}" method="POST">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
@@ -45,7 +31,7 @@
                 <br>
                 <label for="imagem">Imagem:</label><br>
                 <input type="file" name="imagem">
-                <p>Imagem selecionada: {{$Noticia->imagem}}</p>
+                <p>Imagem selecionada: {{ $Noticia->imagem }}</p>
                 <br>
                 <label for="status">Status:</label><br>
                 <select name="status">
@@ -56,7 +42,19 @@
                 <br>
                 <button type="submit">Enviar</button>
             </form>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection
-

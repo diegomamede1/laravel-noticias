@@ -19,15 +19,17 @@
                 @endforeach
             @endif
 
-            {{--  enctype="multipart/form-data" para enviar arquivos--}}
+            {{--  enctype="multipart/form-data" para enviar arquivos --}}
             <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="categoria">Categoria:</label><br>
                 <select name="categoria">
                     @foreach ($Categorias as $Categoria)
-                        <option value="{{$Categoria->id}}">
-                           {{$Categoria->categoria}}
-                        </option>
+                        @if ($Categoria->status == 1)
+                            <option value="{{ $Categoria->id }}">
+                                {{ $Categoria->categoria }}
+                            </option>
+                        @endif
                     @endforeach
                 </select>
                 <br>

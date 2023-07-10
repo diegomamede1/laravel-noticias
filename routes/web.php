@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CategoriasNoticiasController;
+use App\Http\Controllers\Admin\CategoriasNoticiasController;
+use App\Http\Controllers\Admin\NoticiasController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NoticiasController;
+use App\Http\Controllers\Site\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,9 @@ Route::group(['prefix' => '/admin', "middleware" => ['auth']], function () {
 
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home.index');
+Route::get('/blog', [BlogController::class, 'index'])->name('site.blog.index');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('site.blog.show');
+
 
 
 require __DIR__ . '/auth.php';

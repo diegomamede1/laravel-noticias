@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Models\CategoriasNoticias;
 use App\Models\Noticias;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        $Categorias = CategoriasNoticias::all();
+        $Categorias = CategoriasNoticias::where('status', 1)->get();
         return view('admin.noticias.create', [
             'Categorias' => $Categorias,
         ]);

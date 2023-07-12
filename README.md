@@ -48,3 +48,5 @@ Php artisan breezze:install
 Npm install
 Npm run dev
 Php artisan migrate 
+
+----

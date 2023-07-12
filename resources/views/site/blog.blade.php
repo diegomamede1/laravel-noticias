@@ -10,18 +10,22 @@
                 <div class="row">
                     @foreach ($Noticias as $Noticia)
                         <div class="col-12">
-                            <div class="row">
-                                <div class="col-2">
-                                    <img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" class="card-img-top"
-                                        alt="Imagem da notícia">
-                                </div>
-                                <div class="col-10">
-                                    <div class="card-body">
-                                        <h1>{{ $Noticia->titulo }}</h1>
-                                        <p>{{ $Noticia->descritivo_noticia }}</p>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a href="{{ route('site.blog.show', $Noticia) }}">
+                                        <img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" class="card-img-top"
+                                            alt="Imagem da notícia">
+                                        </a>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="card-body">
+                                            <a href="{{ route('site.blog.show', $Noticia) }}">
+                                            <h1>{{ $Noticia->titulo }}</h1>
+                                            <p>{{ $Noticia->descritivo_noticia }}</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     @endforeach
                 </div>

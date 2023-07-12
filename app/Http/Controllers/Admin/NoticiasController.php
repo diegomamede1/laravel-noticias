@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\CategoriasNoticias;
 use App\Models\Noticias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class NoticiasController extends Controller
@@ -58,12 +60,15 @@ class NoticiasController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
-            $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
+            $nomeImagem = Str::slug($request->titulo) . '.' . $imagem->getClientOriginalExtension();
 
-            // Redimensiona e salva a imagem com a biblioteca Intervention Image
+
             Image::make($imagem)
-                //Isso não é obrigatorio, uma vez que vc pode salvar a imagem no tamaho origial
-                ->resize(300, 200) // Defina o tamanho desejado da imagem
+                ->resize(300, 200)
+                ->save(public_path('/storage/noticias/thumb/' . $nomeImagem));
+
+            Image::make($imagem)
+                ->resize(1024, 800)
                 ->save(public_path('/storage/noticias/' . $nomeImagem));
 
             $dados['imagem'] = $nomeImagem;
@@ -122,12 +127,15 @@ class NoticiasController extends Controller
 
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
-            $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
+            $nomeImagem = Str::slug($request->titulo) . '.' . $imagem->getClientOriginalExtension();
 
-            // Redimensiona e salva a imagem com a biblioteca Intervention Image
+
             Image::make($imagem)
-                //Isso não é obrigatorio, uma vez que vc pode salvar a imagem no tamaho origial
-                ->resize(300, 200) // Defina o tamanho desejado da imagem
+                ->resize(300, 200)
+                ->save(public_path('/storage/noticias/thumb/' . $nomeImagem));
+
+            Image::make($imagem)
+                ->resize(1024, 800)
                 ->save(public_path('/storage/noticias/' . $nomeImagem));
 
             $dados['imagem'] = $nomeImagem;

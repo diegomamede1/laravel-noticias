@@ -18,4 +18,11 @@ class BlogController extends Controller
             'Categorias' => $Categorias,
         ]);
     }
+
+    public function show(Noticias $Noticia)
+    {
+        return view("site.detalhes_noticia",[
+            'Noticia' => $Noticia,
+        ]);
+    }
 }

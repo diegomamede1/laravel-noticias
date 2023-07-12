@@ -29,7 +29,6 @@
         }
 
         footer {
-            position: absolute;
             left: 0;
             bottom: 10;
             width: 100%;
@@ -43,7 +42,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper h-100">
         <div class="mx-auto row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,7 +83,7 @@
     </div>
     <footer class="bg-light text-center text-lg-start">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Company Name
+            ©2023 Notícias
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

@@ -55,7 +55,7 @@ Route::group(['prefix' => '/admin', "middleware" => ['auth']], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home.index');
 Route::get('/blog', [BlogController::class, 'index'])->name('site.blog.index');
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('site.blog.show');
+Route::get('/blog/{Noticia}', [BlogController::class, 'show'])->name('site.blog.show');
 
 
 

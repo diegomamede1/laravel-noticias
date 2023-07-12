@@ -17,7 +17,7 @@
                     <tr>
                         <td>{{ $Noticia->categoria }}</td>
                         <td>{{ $Noticia->titulo }}</td>
-                        <td><img src="{{ asset('storage/noticias/' . $Noticia->imagem) }}" style="width: 100px;"></td>
+                        <td><img src="{{ asset('storage/noticias/thumb/' . $Noticia->imagem) }}" style="width: 100px;"></td>
                         <td>
                             <span class="badge text-bg-success p-2 w-100">
                                 Ativo

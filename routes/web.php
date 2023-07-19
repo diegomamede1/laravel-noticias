@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NoticiasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,6 @@ Route::group(['prefix' => '/admin', "middleware" => ['auth']], function () {
 Route::get('/', [HomeController::class, 'index'])->name('site.home.index');
 Route::get('/blog', [BlogController::class, 'index'])->name('site.blog.index');
 Route::get('/blog/{Noticia}', [BlogController::class, 'show'])->name('site.blog.show');
-
 
 
 require __DIR__ . '/auth.php';

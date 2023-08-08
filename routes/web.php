@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriasNoticiasController;
 use App\Http\Controllers\Admin\NoticiasController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\TotemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +59,19 @@ Route::group(['prefix' => '/admin', "middleware" => ['auth']], function () {
 Route::get('/', [HomeController::class, 'index'])->name('site.home.index');
 Route::get('/blog', [BlogController::class, 'index'])->name('site.blog.index');
 Route::get('/blog/{Noticia}', [BlogController::class, 'show'])->name('site.blog.show');
+
+
+Route::group(['prefix' => '/totems'], function () {
+    Route::group(['prefix' => '/unidade2'], function () {
+        Route::get('/index', [TotemController::class, 'index'])->name('totems.unidade2.index');
+        Route::get('/atendimento_senhas', [TotemController::class, 'atendimento_senhas'])->name('totems.unidade2.atendimento_senhas');
+    });
+});
+
+Route::group(['prefix' => '/ajax'], function () {
+        Route::post('/consultas_nascimento', [AjaxController::class, 'ConsultasNascimento'])->name('ajax.consulta.nascimento');
+});
+
 
 
 require __DIR__ . '/auth.php';
